@@ -1,6 +1,7 @@
 package com.stream.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +21,9 @@ public class MainController {
 	private EncryptionSha encryptionSha; 
 	
 	@GetMapping
-	public String hello() {
-		log.info("String: {}, SHA256: {}" , "hiyo", encryptionSha.sha256("hiyo"));
+	public String hello(@CookieValue("user") String ip) {
+		log.info("encryption ip : {}", ip);
+//		log.info("String: {}, SHA256: {}" , "hiyo", encryptionSha.sha256("hiyo"));
 		return "hello";
 	}
 	
