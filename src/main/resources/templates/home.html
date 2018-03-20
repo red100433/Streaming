@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/config :: config">
+</head>
+<body>
+	<header th:replace="fragments/header :: header"></header>
+	<div>
+		<table class="bordered">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>시간</th>
+					<th>조회수</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+<script id="entry-template" type="text/x-handlebars-template">
+<table>
+    <thead> 
+        <th>이름</th> 
+        <th>아이디</th> 
+        <th>메일주소</th> 
+    </thead> 
+    <tbody> 
+        {{#users}} 
+        <tr> 
+            <td>{{name}}</td> 
+            <td>{{id}}</td> 
+            <td><a href="mailto:{{email}}">{{email}}</a></td> 
+        </tr> 
+        {{/users}} 
+    </tbody> 
+</table>
+</script>
+</html>
