@@ -14,15 +14,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MainController {
 	
-	@GetMapping("streaming")
-	@ResponseBody
-	public String hello(@CookieValue("user") String ip, HttpServletRequest req, HttpServletResponse res) {
-//		streamService.streaming(req, res);
-		return "hello";
-	}
+//	@GetMapping("streaming")
+//	@ResponseBody
+//	public String hello(@CookieValue("user") String ip, HttpServletRequest req, HttpServletResponse res) {
+//		return "stream";
+//	}
 	
 	@GetMapping
 	public String index() {
-		return "home";
+		return "stream";
 	}
 }
