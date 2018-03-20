@@ -5,12 +5,15 @@
 <title>HTML5 video태그 예제</title>
 </head>
 <body>
-	<input type="text" th:value="${@environment.getProperty('movie.path')}"/>
-<!-- 	<video width="640" height="344"> -->
-<!-- 		<source src="${@environment.getProperty('movie.path')}/[JTBC] 슈가맨 2.E02.180121.720p-NEXT.mp4" -->
-<!-- 		 type="video/mp4"> -->
-<!-- 		 Your browser does not support the video tag. -->
-<!-- 	</video> -->
+	<input type="text"
+		th:value="${@environment.getProperty('movie.path')}+'\test.mp4'" />
+	<!-- 	<video width="640" height="344" controls="controls"  -->
+	<!-- 		th:src="${@environment.getProperty('movie.path')}+'\test.mp4'"> -->
+	<!-- 	</video> -->
+
+	<video width="640" height="344" controls="controls" type='video/mp4; codecs="avc1, mp4a"'
+		src="http://localhost:8080/contents/test.mp4">
+	</video>
 
 </body>
 </html>
