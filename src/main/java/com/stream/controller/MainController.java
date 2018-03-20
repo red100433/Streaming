@@ -1,32 +1,27 @@
 package com.stream.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import com.stream.component.EncryptionSha;
-import com.stream.component.StreamView;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 
-@RestController
+@Controller
 @Slf4j
 public class MainController {
-	@Autowired
-	private StreamView streamView;
 	
-	@Autowired
-	private EncryptionSha encryptionSha; 
+//	@GetMapping("streaming")
+//	@ResponseBody
+//	public String hello(@CookieValue("user") String ip, HttpServletRequest req, HttpServletResponse res) {
+//		return "stream";
+//	}
 	
 	@GetMapping
-	public String hello() {
-		log.info("String: {}, SHA256: {}" , "hiyo", encryptionSha.sha256("hiyo"));
-		return "hello";
-	}
-	
-	@PostMapping
-	public String hello2() {
-		return "noMan";
+	public String index() {
+		return "stream";
 	}
 }

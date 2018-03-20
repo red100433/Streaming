@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>HTML5 video태그 예제</title>
+</head>
+<body>
+	<input type="text"
+		th:value="${@environment.getProperty('movie.path')}+'\test.mp4'" />
+	<!-- 	<video width="640" height="344" controls="controls"  -->
+	<!-- 		th:src="${@environment.getProperty('movie.path')}+'\test.mp4'"> -->
+	<!-- 	</video> -->
+
+	<video width="640" height="344" controls="controls" type='video/mp4; codecs="avc1, mp4a"'
+		src="http://localhost:8080/contents/test.mp4">
+	</video>
+
+</body>
+</html>
