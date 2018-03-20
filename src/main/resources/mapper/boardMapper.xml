@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.stream.repository.BoardRepo">
+	
+	<select id="getListAll" resultType="com.stream.model.Board">
+		SELECT id
+		, title
+		, src
+		, date 
+		FROM board
+		ORDER BY id	DESC
+		limit 1000;
+	</select>
+	
+	<select id="getList" resultType="com.stream.model.Board">
+		SELECT id
+		, title
+		, content
+		, userId
+		, date 
+		FROM board
+		WHERE id <![CDATA[ < ]]> #{next} 
+		ORDER BY id	DESC
+		limit 20
+	</select>
+	<select id="getById" resultType="com.stream.model.Board">
+		SELECT id
+		, title
+		, content
+		, userId
+		, date 
+		FROM board 
+		WHERE id=#{id}
+		AND userId=#{userId}
+	</select>
+	
+	<insert id="add">
+		<choose>
+				<when test="id != null and id != 0">
+					INSERT INTO Board(id
+									, title
+									, content
+									, userId) 
+									
+					VALUES (#{id}
+							, #{title}
+							,#{content}
+							,#{userId})
+							
+					ON DUPLICATE KEY UPDATE title=#{title}
+					, content=#{content}
+					, userId=#{userId}
+				</when>
+		
+				<otherwise>
+					INSERT INTO Board(title
+									, content
+									, userId) 
+					VALUES (#{title}
+							,#{content}
+							,#{userId})
+				</otherwise>
+			</choose>
+	</insert>
+	
+	<delete id="delete">
+		DELETE 
+		FROM Board 
+		WHERE id=#{id} 
+		AND userId=#{userId}
+	</delete>
+	
+</mapper>
